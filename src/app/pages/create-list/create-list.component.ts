@@ -59,8 +59,8 @@ debugger  }
 
 
   submit(){
-    this.items=[...this.items,...this.myForm.value.rows].flat()
-    
+    this.items=this.items!=null?[...this.items,...this.myForm.value.rows].flat():this.items=[...this.myForm.value.rows].flat()
+    debugger;
   this.data.FormData.next(this.items);
     debugger
     this.data.setItem(this.items)
