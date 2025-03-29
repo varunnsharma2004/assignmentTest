@@ -1,0 +1,51 @@
+<div class="p-2 mt-5">
+    @if (itemsData==null) {
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4>No Items</h4>
+        </div>
+    </div>
+    }
+    @else{
+      <div class="p-2 mt-2">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-primary">
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (data of paginatedData; track $index) {
+                <tr>
+                  <td>
+                    <img [src]="data.image" alt="Item Image" width="50" height="50" class="rounded border">
+                  </td>
+                  <td>{{ data.title || 'Untitled' }}</td>
+                  <td>₹{{ data.price || 'N/A' }}</td>
+                  <td>{{ data.qty || 'N/A' }}</td>
+                  <td>{{ data.describe || 'No Description' }}</td>
+                  <td>{{ data.date || 'Not Available' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <button class="btn btn-primary" (click)="changePage(false)" [disabled]="page === 1">Previous</button>
+          <span>Page {{ page }} of {{allpages}}</span>
+          <button class="btn btn-primary" (click)="changePage(true)" >Next</button>
+        </div>
+      </div>
+      
+          
+          
+}
+</div>
